@@ -1,3 +1,5 @@
+// Not finished
+
 const liste = `.....................................164.................429.35...........221....................................................34.........
 ........................464...........*.................................../.......53*.....954.763.....................114*.764..............
 223............275.....................725.....$.........460....176............................*............+.................&.267.........
@@ -139,7 +141,8 @@ const liste = `.....................................164.................429.35..
 .399........739.............*....208..........*......*...928....*...........*...........729.....721..........#.......*...............-......
 .........................577...............144....906..........864.........416...............45.........73........388.............689...11..`
 
-const liste1 = `467..114..
+const liste1 = 
+`467..114..
 ...*......
 ..35..633.
 ......#...
@@ -155,79 +158,115 @@ const array = liste1.split(`\n`);
 const notSymbol = "0123456789."
 const isNumber = "0123456789"
 
-// console.log(array)
-
-function checkAround(line0, line1, line2){
-    //function that returns the list of start and end indexes for numbers in each line
-    let validIndexes = []
-    if(line0 == 0){
-        for (let index = 0; index < line1.length; index ++){
-            if(isNumber.includes(line1[index]) && !((isNumber.includes(line1[index-1])) && (isNumber.includes(line1[index+1])))    ){
-                validIndexes.push(index)
-            }}
-    } else if (line2 == 0){
-        for (let index = 0; index < line1.length; index ++){
-            if(isNumber.includes(line1[index]) && !((isNumber.includes(line1[index-1])) && (isNumber.includes(line1[index+1])))    ){
-                validIndexes.push(index)
-            }}
-    } else {
-        for (let index = 0; index < line1.length; index ++){
-            if(isNumber.includes(line1[index]) && !((isNumber.includes(line1[index-1])) && (isNumber.includes(line1[index+1])))   ){
-                validIndexes.push(index)
-            }
-    }
-    }
-    
-    return validIndexes
-}
+let carte = []
 
 
-function groupAndAdd(lineOfIndexes, index){
-    let sum = 0
-    if (index == 0){
-        let currentLine = array[index]
-        let nextLine = array[index + 1]
-    } else if (index == array.length - 1){
-        let previousLine = array[index - 1]
-        let currentLine = array[index]
-    } else {
-        let previousLine = array[index - 1]
-        let currentLine = array[index]
-        let nextLine = array[index + 1]
-        for(let indexItem = 0; indexItem < lineOfIndexes.length; indexItem += 2){
-            if(
-                !notSymbol.includes(previousLine[indexItem -1]) 
-                || !notSymbol.includes(previousLine[indexItem])
-                || !notSymbol.includes(previousLine[indexItem + 1])
-                || !notSymbol.includes(currentLine[indexItem - 1])
-                || !notSymbol.includes(currentLine[indexItem + 1])
-                || !notSymbol.includes(nextLine[indexItem -1]) 
-                || !notSymbol.includes(nextLine[indexItem])
-                || !notSymbol.includes(nextLine[indexItem + 1])
-                ){
-                    sum += Number(currentLine.substring(lineOfIndexes[indexItem], lineOfIndexes[indexItem + 1] + 1))
-                }
-        }
-    }
-    
-    // for(let indexItem = 0; indexItem < lineOfIndexes.length; indexItem += 2){
-    //     sum += Number(currentLine.substring(lineOfIndexes[indexItem], lineOfIndexes[indexItem + 1] + 1))
-    // }
-    return sum
-}
 
+array.forEach((item, itemIndex) => {
+    for((elem) in item){
+        if (!notSymbol.includes(item[elem])){
+            console.log("Line : " + itemIndex + " position : " + elem + " , symbol : " + item[elem])
 
-array.forEach((elem, indexElem) =>{
-
-
-    if(indexElem === 0){
-        groupAndAdd(checkAround(0, elem,array[indexElem+1]), indexElem)
-    } else if (indexElem === array.length){
-        groupAndAdd(checkAround(array[indexElem-1], elem,0), indexElem)
-    }else {
-        groupAndAdd(checkAround(array[indexElem-1], elem,array[indexElem+1]), indexElem)
-    }
+            console.log("numbers around : " + itemIndex + " position : " + elem + " , symbol : " + item[elem])
+        }}
 })
+
+function checkLineUp(indexLine, indexLetter){
+    let tempRow = []
+    //check au dessous donc indexLine - 1
+    for(letter of array[indexLine - 1]){
+        
+    }
+    //check meme ligne donc indexLine
+
+    //check au dessus donc indexLine + 1
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+// // console.log(array)
+
+// function checkAround(line0, line1, line2){
+//     //function that returns the list of start and end indexes for numbers in each line
+//     let validIndexes = []
+//     if(line0 == 0){
+//         for (let index = 0; index < line1.length; index ++){
+//             if(isNumber.includes(line1[index]) && !((isNumber.includes(line1[index-1])) && (isNumber.includes(line1[index+1])))    ){
+//                 validIndexes.push(index)
+//             }}
+//     } else if (line2 == 0){
+//         for (let index = 0; index < line1.length; index ++){
+//             if(isNumber.includes(line1[index]) && !((isNumber.includes(line1[index-1])) && (isNumber.includes(line1[index+1])))    ){
+//                 validIndexes.push(index)
+//             }}
+//     } else {
+//         for (let index = 0; index < line1.length; index ++){
+//             if(isNumber.includes(line1[index]) && !((isNumber.includes(line1[index-1])) && (isNumber.includes(line1[index+1])))   ){
+//                 validIndexes.push(index)
+//             }
+//     }
+//     }
+    
+//     return validIndexes
+// }
+
+
+// function groupAndAdd(lineOfIndexes, index){
+//     let sum = 0
+//     if (index == 0){
+//         let currentLine = array[index]
+//         let nextLine = array[index + 1]
+//     } else if (index == array.length - 1){
+//         let previousLine = array[index - 1]
+//         let currentLine = array[index]
+//     } else {
+//         let previousLine = array[index - 1]
+//         let currentLine = array[index]
+//         let nextLine = array[index + 1]
+//         for(let indexItem = 0; indexItem < lineOfIndexes.length; indexItem += 2){
+//             if(
+//                 !notSymbol.includes(previousLine[indexItem -1]) 
+//                 || !notSymbol.includes(previousLine[indexItem])
+//                 || !notSymbol.includes(previousLine[indexItem + 1])
+//                 || !notSymbol.includes(currentLine[indexItem - 1])
+//                 || !notSymbol.includes(currentLine[indexItem + 1])
+//                 || !notSymbol.includes(nextLine[indexItem -1]) 
+//                 || !notSymbol.includes(nextLine[indexItem])
+//                 || !notSymbol.includes(nextLine[indexItem + 1])
+//                 ){
+//                     sum += Number(currentLine.substring(lineOfIndexes[indexItem], lineOfIndexes[indexItem + 1] + 1))
+//                 }
+//         }
+//     }
+    
+//     // for(let indexItem = 0; indexItem < lineOfIndexes.length; indexItem += 2){
+//     //     sum += Number(currentLine.substring(lineOfIndexes[indexItem], lineOfIndexes[indexItem + 1] + 1))
+//     // }
+//     return sum
+// }
+
+
+// array.forEach((elem, indexElem) =>{
+
+
+//     if(indexElem === 0){
+//         groupAndAdd(checkAround(0, elem,array[indexElem+1]), indexElem)
+//     } else if (indexElem === array.length){
+//         groupAndAdd(checkAround(array[indexElem-1], elem,0), indexElem)
+//     }else {
+//         groupAndAdd(checkAround(array[indexElem-1], elem,array[indexElem+1]), indexElem)
+//     }
+// })
 
 
 // array.forEach((item, itemIndex) => {

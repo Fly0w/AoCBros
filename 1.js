@@ -1,3 +1,6 @@
+// Finished
+
+
 const liste = `76xkqjzqtwonfour
 sixthree8sixjxjqsjgjgp
 38bgcczgtninefivefive
